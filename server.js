@@ -8,7 +8,8 @@ const db = require('./queries')
 
 app.use(morgan('combined'));
 
-// app.use('/build', express.static('build'))
+app.use(express.static(__dirname + "/client/build"));
+// app.use('/client', express.static('client'))
 
 // for parsing application/json
 app.use(bodyParser.json());
@@ -21,8 +22,8 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/build/index.html'))
-  // res.json({ info: 'Poker Run API using React, Node, Express, and Postgres' })
+  // res.sendFile(path.join(__dirname + '/client/build/index.html'))
+  res.json({ info: 'Poker Run API using React, Node, Express, and Postgres' })
 })
 
 app.get('/users', db.getUsers)
