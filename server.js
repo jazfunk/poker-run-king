@@ -3,11 +3,12 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const path = require('path')
-const db = require('./src/queries')
+const morgan = require('morgan')
+const db = require('./queries')
 
-// Todo: Install Morgan
+app.use(morgan('combined'));
 
-app.use('/public', express.static('public'))
+// app.use('/build', express.static('build'))
 
 // for parsing application/json
 app.use(bodyParser.json());
