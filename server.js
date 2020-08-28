@@ -1,10 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 3022
+const port = 3000
 const path = require('path')
 const db = require('./src/queries')
-const { debug } = require('console')
+
+// Todo: Install Morgan
 
 app.use('/public', express.static('public'))
 
@@ -19,7 +20,7 @@ app.use(
 )
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join( __dirname + '/public/index.html'))
+  res.sendFile(path.join(__dirname + '/build/index.html'))
   // res.json({ info: 'Poker Run API using React, Node, Express, and Postgres' })
 })
 
